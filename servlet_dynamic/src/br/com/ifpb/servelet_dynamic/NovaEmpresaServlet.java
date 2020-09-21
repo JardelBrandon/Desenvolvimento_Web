@@ -1,4 +1,4 @@
-package br.com.ifpb.gerenciador.servlet;
+package br.com.ifpb.servelet_dynamic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
