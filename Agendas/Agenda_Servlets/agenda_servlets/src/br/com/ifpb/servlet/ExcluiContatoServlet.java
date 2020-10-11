@@ -22,24 +22,46 @@ public class ExcluiContatoServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println("Excluindo contato");
 		
 		Banco banco = new Banco();
 		List<Contato> lista = banco.getContatos();
 		List<Contato> contatosExcluir = new ArrayList<Contato>();
 		
 		String[] values = request.getParameterValues("contato");
-		for(String value : values) {
-        	System.out.println(value);
-        	for(Contato contato: lista) {
-        		if(contato.getNome().equals(value)) {
-        			contatosExcluir.add(contato);
-        		}
-        	}
-        }
+		if(values != null) {
+			System.out.println("Excluindo contato");
+			for(String value : values) {
+	        	for(Contato contato: lista) {
+	        		if(contato.getNome().equals(value)) {
+	        			contatosExcluir.add(contato);
+	        		}
+	        	}
+	        }
+			
+			for(Contato contato : contatosExcluir) {
+				banco.remove(contato);
+			}
+			PrintWriter out = response.getWriter();
 		
-		for(Contato contato : contatosExcluir) {
-			banco.remove(contato);
+			out.println("<html><body onLoad=\"showResult();\">");
+			out.println("<ul>");
+	
+			for (Contato contato : contatosExcluir) {
+				out.println("Contato " + contato.getNome() + " Excluido com sucesso! </label><br>");
+			}
+			out.println("</ul>");
+			
+			out.println("<script>");
+	        out.println("function showResult(){");
+	        out.println("alert(\"Contato(s) excluido(s) com sucesso!\");");
+	        out.println("}");
+	        out.println("</script>");
+			
+			out.println("</body></html>");
+			out.println("<meta http-equiv='refresh' content='3;URL=/agenda_servlets/mainMenu.html'><!-- redirects after 3 seconds -->");
 		}
-    }
+		else {
+			response.sendRedirect("mainMenu.html");
+		}
+	}
 }
