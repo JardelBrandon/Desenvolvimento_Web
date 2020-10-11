@@ -25,14 +25,15 @@ public class ExcluiContatosServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Excluindo contato");
-
+	
 		Banco banco = new Banco();
 		List<Contato> lista = banco.getContatos();
 		List<Contato> contatosExcluir = new ArrayList<Contato>();
 
 		String[] values = request.getParameterValues("contato");
+		
 		if (values != null) {
+			System.out.println("Excluindo contato");
 			for (String value : values) {
 				System.out.println(value);
 				for (Contato contato : lista) {
@@ -41,14 +42,17 @@ public class ExcluiContatosServlet extends HttpServlet {
 					}
 				}
 			}
-		}
 
-		for (Contato contato : contatosExcluir) {
-			banco.remove(contato);
+			for (Contato contato : contatosExcluir) {
+				banco.remove(contato);
+			}
+	
+			RequestDispatcher rd = request.getRequestDispatcher("/contatosExcluidos.jsp");
+			request.setAttribute("contatos", values);
+			rd.forward(request, response);
 		}
-
-		RequestDispatcher rd = request.getRequestDispatcher("/contatosExcluidos.jsp");
-		request.setAttribute("contatos", values);
-		rd.forward(request, response);
+		else {
+			response.sendRedirect("mainMenu.html");
+		}
 	}
 }
