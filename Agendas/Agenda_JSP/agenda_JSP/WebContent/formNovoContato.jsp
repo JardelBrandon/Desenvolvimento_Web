@@ -12,6 +12,8 @@
 	
 		<input type="submit" />
 	</form>
-
+	<form action="/agenda_JSP/mainMenu.html">
+		<input type="submit" value="Voltar">
+	</form>
 </body>
 </html>
