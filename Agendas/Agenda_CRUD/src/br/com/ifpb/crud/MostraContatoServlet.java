@@ -23,8 +23,6 @@ public class MostraContatoServlet extends HttpServlet {
 		Banco banco = new Banco();
 		Contato contato = banco.buscaContatoPeloId(id);
 		
-		System.out.println("Nome: " + contato.getNome());
-		
 		request.setAttribute("contato", contato);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/formAlteraContato.jsp");

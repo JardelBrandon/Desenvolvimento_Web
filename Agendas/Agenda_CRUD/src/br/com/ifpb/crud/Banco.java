@@ -36,9 +36,7 @@ public class Banco {
 	
 	public void remove(String[] values) {
 		if (values != null) {
-			System.out.println("Excluindo contato");
 			for (String value : values) {
-				System.out.println(value);
 				Iterator<Contato> it = lista.iterator();
 				while(it.hasNext()) {
 					Contato contato = it.next();

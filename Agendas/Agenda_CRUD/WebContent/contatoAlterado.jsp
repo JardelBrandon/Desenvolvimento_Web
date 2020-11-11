@@ -2,7 +2,7 @@
 
 <html>
 <body onLoad='showResult();'>
-	<h1>Editar contato: </h1>
+	<h1>Contato editado: </h1>
 	Contato: ${nomeAntigo} - Telefone: ${telefoneAntigo }
 	<h3>Alterado para: </h3>
 	Contato: ${contato.getNome() } - Telefone: ${contato.getTelefone() }

@@ -9,6 +9,7 @@
 <title>Agenda - Excluir</title>
 </head>
 <body>
+	<h1> Editar contato: </h1>
 	<form action="/agenda_CRUD/mostraContato" method="post">
 		
 		<ul>
@@ -19,7 +20,7 @@
 		</c:forEach>
 		
 		</ul>
-		<input type="submit" value="Submit">
+		<input type="submit" value="Editar">
 	</form>
 		
 	<form action="/agenda_CRUD/mainMenu.html">

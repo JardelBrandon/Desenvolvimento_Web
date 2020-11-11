@@ -1,11 +1,6 @@
 <%@ page import= "br.com.ifpb.crud.Contato"%>
 <%
 	String[] contatos =  (String[]) request.getAttribute("contatos");
-	if(contatos != null) {
-		for(String contato : contatos) {
-			System.out.println("Nome do contato: " + contato);
-		}
-	}
 %>
 
 
@@ -15,7 +10,7 @@
 	<%
 	if(contatos != null) {
 		for(String contato : contatos) { %>
-			<p> Contato: <%=(contato)%> removido com Sucesso! </p>
+			<p> Contato removido com Sucesso! </p>
 		<%}
 	}
 	%>

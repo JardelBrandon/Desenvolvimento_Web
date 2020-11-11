@@ -6,6 +6,7 @@
 <title>Agenda - Novo Contato</title>
 </head>
 <body>
+	<h1> Editar contato: </h1>
 	
 	<form action="${linkServletAlteraContato}" method="post">
 	

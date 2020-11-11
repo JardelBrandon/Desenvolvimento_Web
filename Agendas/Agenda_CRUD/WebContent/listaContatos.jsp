@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<h1> Lista Contatos: </h1>
+	<h1> Lista contatos: </h1>
 	
 	<ul>
 		<c:forEach items="${contatos}" var="contato">
