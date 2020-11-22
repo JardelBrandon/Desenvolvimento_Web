@@ -1,9 +1,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url value="/alteraContato" var="linkServletAlteraContato"/>
+<c:url value="/mainMenu.jsp" var="linkMainMenu"/>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Agenda - Novo Contato</title>
+<title>Agenda - Editar</title>
 </head>
 <body>
 	<h1> Editar contato: </h1>
@@ -16,7 +17,7 @@
 		<input type="submit" value="Enviar"/>
 	</form>
 	
-	<form action="/agenda_CRUD/mainMenu.html">
+	<form action="${linkMainMenu}">
 		<input type="submit" value="Voltar">
 	</form>
 

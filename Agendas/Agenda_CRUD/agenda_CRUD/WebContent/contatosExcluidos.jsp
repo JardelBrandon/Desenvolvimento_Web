@@ -1,12 +1,17 @@
 <%@ page import= "br.com.ifpb.crud.Contato"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/mainMenu.jsp" var="linkMainMenu"/>
 <%
 	String[] contatos =  (String[]) request.getAttribute("contatos");
 %>
 
-
 <html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sucesso!</title>
+</head>
 <body onLoad='showResult();'>
-	<h1>Excluir contato na pagina JSP: </h1>
+	<h1>Contatos excluidos: </h1>
 	<%
 	if(contatos != null) {
 		for(String contato : contatos) { %>
@@ -22,4 +27,4 @@
 </body>
 </html>
 
-<meta http-equiv='refresh' content='3;URL=/agenda_CRUD/mainMenu.html'><!-- redirects after 3 seconds -->
+<meta http-equiv='refresh' content='3;URL=${linkMainMenu}'><!-- redirects after 3 seconds -->

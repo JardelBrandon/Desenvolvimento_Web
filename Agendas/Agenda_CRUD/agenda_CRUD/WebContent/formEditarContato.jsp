@@ -2,15 +2,17 @@
  pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List, br.com.ifpb.crud.Contato"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/mostraContato" var="linkServletMostraContato"/>
+<c:url value="/mainMenu.jsp" var="linkMainMenu"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Agenda - Excluir</title>
+<title>Agenda - Editar</title>
 </head>
 <body>
-	<h1> Editar contato: </h1>
-	<form action="/agenda_CRUD/mostraContato" method="post">
+	<h1> Selecionar contato para editar: </h1>
+	<form action="${linkServletMostraContato}" method="post">
 		
 		<ul>
 	
@@ -23,7 +25,7 @@
 		<input type="submit" value="Editar">
 	</form>
 		
-	<form action="/agenda_CRUD/mainMenu.html">
+	<form action="${linkMainMenu}">
 		<input type="submit" value="Voltar">
 	</form>
 </body>

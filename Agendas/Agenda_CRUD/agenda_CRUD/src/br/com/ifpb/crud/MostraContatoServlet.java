@@ -18,15 +18,20 @@ public class MostraContatoServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String paramId = request.getParameter("contatoId");
-		int id = Integer.valueOf(paramId);
 		
-		Banco banco = new Banco();
-		Contato contato = banco.buscaContatoPeloId(id);
+		if (paramId != null) {
+			int id = Integer.valueOf(paramId);
 		
-		request.setAttribute("contato", contato);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/formAlteraContato.jsp");
-		rd.forward(request, response);
+			Banco banco = new Banco();
+			Contato contato = banco.buscaContatoPeloId(id);
+			
+			request.setAttribute("contato", contato);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/formAlteraContato.jsp");
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect("mainMenu.jsp");
+		}
 	}
 
 }

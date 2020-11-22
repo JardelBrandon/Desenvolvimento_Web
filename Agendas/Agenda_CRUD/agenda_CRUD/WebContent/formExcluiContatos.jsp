@@ -2,6 +2,8 @@
  pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List, br.com.ifpb.crud.Contato"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/excluiContatos" var="linkServletExcluiContatos"/>
+<c:url value="/mainMenu.jsp" var="linkMainMenu"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 </head>
 <body>
 	<h1> Excluir contatos: </h1>
-	<form action="/agenda_CRUD/excluiContatos" method="post">
+	<form action="${linkServletExcluiContatos}" method="post">
 		
 		<ul>
 	
@@ -23,7 +25,7 @@
 		<input type="submit" value="Excluir">
 	</form>
 		
-	<form action="/agenda_CRUD/mainMenu.html">
+	<form action="${linkMainMenu}">
 		<input type="submit" value="Voltar">
 	</form>
 </body>

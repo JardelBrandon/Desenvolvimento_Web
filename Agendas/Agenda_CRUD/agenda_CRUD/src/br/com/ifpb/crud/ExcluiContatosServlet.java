@@ -39,7 +39,7 @@ public class ExcluiContatosServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
-			response.sendRedirect("mainMenu.html");
+			response.sendRedirect("mainMenu.jsp");
 		}
 	}
 }
