@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:body>
+		<h1>Novo Telefone</h1>
+		<h:form>
+		
+			<h:messages id="messages" style="color:red"/>
+			
+			<fieldset>
+				<legend>Dados do Telefone</legend>
+				<h:panelGrid columns="2">
+
+					<h:outputLabel value="DDD:" for="ddd" />
+					<h:inputText id="ddd" value="#{telefoneBean.telefone.ddd}"
+					required="true"					
+                 	requiredMessage="O campo ddd é obrigatório">
+					<f:validator validatorId="dddValidator" />
+					</h:inputText>
+				</h:panelGrid>
+				
+				<h:message for="ddd" style="color:red"/>   
+					
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Numero:" for="numero" />
+					<h:inputText id="numero" value="#{telefoneBean.telefone.numero}"
+					required="true"					
+                 	requiredMessage="O campo numero é obrigatório">
+                 	<f:validator validatorId="numeroValidator"/>                 	                 	              			
+					</h:inputText>												
+				</h:panelGrid>
+				
+				<h:message for="numero" style="color:red"/>   
+				
+			</fieldset>
+	
+			<fieldset>
+				<legend>Dados do Proprietario(s)</legend>
+				<h:panelGrid columns="4">
+
+					<h:outputLabel value="Proprietarios:" />
+					<h:selectOneMenu value="#{telefoneBean.proprietarioId}" id="proprietario">
+						<f:selectItems value="#{telefoneBean.proprietarios}" itemValue="#{proprietario.id}"
+							itemLabel="#{proprietario.nome}" var="proprietario" />
+					</h:selectOneMenu>
+					
+					<h:commandButton action="#{telefoneBean.adicionarProprietario}" value="Adicionar Proprietario">
+					<f:ajax execute="proprietario" render="tabelaProprietarios" />
+					</h:commandButton>
+					
+					<h:outputLink value="contato.xhtml">Cadastrar novo proprietário</h:outputLink>
+					
+					<h:dataTable value="#{telefoneBean.proprietariosDoTelefone}" 
+					var="proprietario" id="tabelaProprietarios">
+						<h:column>
+							<h:outputText value="#{proprietario.nome}" />
+						</h:column>
+					</h:dataTable>
+					
+				</h:panelGrid>
+	
+									
+			</fieldset>
+	
+			<h:commandButton value="Gravar" action="#{telefoneBean.gravar}" id="gravar">
+				<f:ajax execute="@form" render="@form :tabelaTelefones" />
+			</h:commandButton>
+			
+		</h:form>
+	
+		<h:dataTable value="#{telefoneBean.telefones}" var="telefone" id="tabelaTelefones">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{telefone.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">DDD</f:facet>
+				<h:outputText value="#{telefone.ddd}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Numero</f:facet>
+				<h:outputText value="#{telefone.numero}" />
+			</h:column>
+		</h:dataTable>
+	</h:body>
+
+</html>

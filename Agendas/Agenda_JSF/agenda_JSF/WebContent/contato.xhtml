@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" >
+
+	<h:body>
+		<h1>Novo Contato</h1>
+		<h:form id = "contato">
+			<fieldset>
+				<legend>Dados do Contato</legend>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome:" for="nome" />
+					<h:inputText id="nome" value="#{contatoBean.contato.nome}"
+						validatorMessage="O nome deve possuir entre 3 a 40 caracteres">
+						<f:validateLength minimum="3" maximum="40" />
+						<f:ajax event="blur" render="messageNome" />
+					</h:inputText>
+				
+					<h:message for="nome" id="messageNome" style="color:red"/>
+				</h:panelGrid>
+				<h:panelGrid columns="2">			
+					<h:outputLabel value="Genero:" for="genero" />
+					<h:selectOneRadio id="genero" value="#{contatoBean.contato.genero}" 
+					required="true" requiredMessage="Escolha um genero" onchange="submit()">	
+						<f:valueChangeListener type="br.com.ifpb.agenda_JSF.util.GeneroListener" />	        
+		                <f:selectItems value="#{contatoBean.generoValor}" />
+		            </h:selectOneRadio>
+		    		
+		    		<h:message for="genero" style="color:red"/>
+	    		</h:panelGrid>
+	    		<h:panelGrid columns="2">	    		
+					<h:outputLabel value="Data de Nascimento:" for="dataDeNascimento" />
+					<h:inputText id="dataDeNascimento" value="#{contatoBean.contato.dataDeNascimento.time}"
+					converterMessage="A data deve seguir o seguinte formato: dd/MM/yyyy">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_Paulo" />
+					</h:inputText>
+		    		
+					<h:commandButton value="Gravar" action="#{contatoBean.gravar}" />
+					
+					<h:message for="dataDeNascimento" style="color:red"/>
+					
+				</h:panelGrid>
+			</fieldset>
+		</h:form>
+		
+		<h:outputLink value="telefone.xhtml">Cadastrar novo telefone</h:outputLink>
+		
+	</h:body>
+
+</html>
